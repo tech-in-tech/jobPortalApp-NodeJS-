@@ -1,5 +1,6 @@
 // * Import Packages
 const express = require('express');
+const expressError = require("express-async-errors")
 const cors = require("cors");
 const colors = require('colors');
 const morgan = require('morgan');
@@ -7,6 +8,7 @@ const app = express();
 const dotenv = require('dotenv');
 require('dotenv').config();
 const db = require('./config/db');
+const { errorMiddleware } = require('./middlewares/errorMiddleware');
 
 // * Middlewares
 // Middleware for cross origin error
@@ -21,6 +23,10 @@ app.use(morgan('dev'));
 // * route
 // URL => http://localhost:8080
 app.use('/api/v1/test',require('./routes/testRoutes'))
+app.use('/api/v1/auth',require('./routes/authRoutes'))
+
+//*Validation Middleware
+app.use(errorMiddleware)
 
 
 // * PORT 
