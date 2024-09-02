@@ -32,7 +32,7 @@ db.on('error', (error) => {
 
 // * event listner for if database is disconnected 
 db.on('disconnected', () => {
-  console.log("MongoDB disconnected".bgRed);
+  console.log("MongoDB disconnected".bgBlack);
 })
 
 // ! Export the database connection
